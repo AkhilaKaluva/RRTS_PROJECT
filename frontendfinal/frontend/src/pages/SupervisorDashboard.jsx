@@ -370,12 +370,23 @@ const SupervisorDashboard = () => {
           );
         }
         
-        // Show "Scheduled" for scheduled complaints with assigned support person
+        // Show "Scheduled/Assigned" for scheduled complaints with assigned support person
         if (row.status === 'scheduled' && row.assignedSupportPerson) {
           return (
             <div className="text-center">
-              <span className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-bold bg-green-100 text-green-800 border-2 border-green-400">
-                ✅ Completed
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border-2 border-purple-300">
+                📋 Assigned to Support
+              </span>
+            </div>
+          );
+        }
+        
+        // Show "Scheduled" for scheduled complaints without support person
+        if (row.status === 'scheduled') {
+          return (
+            <div className="text-center">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-800 border-2 border-indigo-300">
+                📅 Scheduled
               </span>
             </div>
           );
