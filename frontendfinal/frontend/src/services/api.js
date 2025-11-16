@@ -4,7 +4,7 @@ const API_URL = '/api';
 
 // Create axios instance
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: "https://rrts-project-1.onrender.com/",
   headers: {
     'Content-Type': 'application/json',
   },

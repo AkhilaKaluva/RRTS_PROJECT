@@ -36,13 +36,12 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   return children;
 };
 
-// Dashboard Router based on role - redirects to role-specific route
+// Dashboard Router
 const DashboardRouter = () => {
   const { user } = useAuth();
 
   if (!user) return <Navigate to="/" />;
 
-  // Redirect to role-specific dashboard route
   switch (user.role) {
     case 'resident':
       return <Navigate to="/resident/dashboard" replace />;
@@ -64,12 +63,14 @@ const DashboardRouter = () => {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+
+      {/* ⭐ IMPORTANT FIX FOR GITHUB PAGES ⭐ */}
+      <Router basename="/RRTS_PROJECT/">
+
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
-          {/* Legacy dashboard route - redirects to role-specific route */}
+
           <Route
             path="/dashboard"
             element={
@@ -79,7 +80,6 @@ function App() {
             }
           />
 
-          {/* Role-specific dashboard routes */}
           <Route
             path="/resident/dashboard"
             element={
@@ -152,6 +152,7 @@ function App() {
 
           <Route path="/" element={<LandingPage />} />
         </Routes>
+
       </Router>
     </AuthProvider>
   );

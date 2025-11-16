@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/RRTS_PROJECT/',   // ⭐ VERY IMPORTANT
+  base: "/RRTS_PROJECT/",  // Must match EXACT GitHub repo name
   plugins: [react()],
   server: {
     port: 3000,
